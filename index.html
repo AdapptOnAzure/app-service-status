@@ -26,7 +26,7 @@
 <header class="page-header">
   <h1>App Service on Linux patch status by release channel</h1>
   <p class="lede">When each built-in runtime stack was first seen patched on each platform release channel, for this week's critical vulnerabilities.</p>
-  <p class="meta">Status as of <time datetime="2026-10-23T09:00Z">23 October 2026, 09:00 UTC</time>, from canary data. Times are UTC, rounded down to the hour.</p>
+  <p class="meta">Status as of <time datetime="2026-10-23T17:00Z">23 October 2026, 17:00 UTC</time>, from canary data. Times are UTC, rounded down to the hour.</p>
 </header>
 
 <main>
@@ -42,6 +42,7 @@
   <section aria-labelledby="php-heading">
     <h2 id="php-heading">php2shell remote code execution</h2>
     <p class="advisory">Two PHP flaws (CVE-2026-109618, CVE-2026-109619) let a remote attacker run code on the server. Public 21 October 2026, 14:00 UTC, in a PHP security release.</p>
+    <p class="advisory">A third flaw (CVE-2026-115560, disclosed 23 October) affects only unusually configured apps and will be fixed in PHP's next regular release.</p>
     <div class="table-wrap">
       <table>
         <thead>
@@ -307,6 +308,7 @@
     <h2 id="sources-heading">Sources</h2>
     <ul class="sources">
       <li>php2shell: <a href="https://azure.github.io/AppService/2026/10/21/php-critical-security-release-app-service-linux.html" rel="noopener noreferrer">Azure App Service blog</a>, <a href="https://www.helpnetsecurity.com/2026/10/21/php2shell-php-vulnerabilities-patched-cve-2026-109618-cve-2026-109619/" rel="noopener noreferrer">Help Net Security</a></li>
+      <li>CVE-2026-115560: <a href="https://www.php.net/index.php#2026-10-20-1" rel="noopener noreferrer">PHP announcement</a>, <a href="https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html" rel="noopener noreferrer">The Hacker News</a></li>
       <li>Brotli: <a href="https://thehackernews.com/2026/10/nodejs-brotli-decoder-bug-could-allow.html" rel="noopener noreferrer">The Hacker News</a>, <a href="https://explainx.ai/blog/nodejs-security-release-october-2026-brotli-rce-tls-hostname-bypass-emudhra-2026" rel="noopener noreferrer">explainx.ai</a>, <a href="https://hol.org/guard/security/cves/CVE-2026-111497-out-of-bounds-write-in-google-brotli-decoder" rel="noopener noreferrer">HOL Guard</a></li>
       <li>eMudhra: <a href="https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/" rel="noopener noreferrer">Mozilla security blog</a>, <a href="https://emudhra.com/en/post/certificate-security-incident" rel="noopener noreferrer">eMudhra statement</a></li>
       <li>Release channels: <a href="https://azure.github.io/AppService/2026/05/06/platform-release-channel.html" rel="noopener noreferrer">Platform release channel announcement</a></li>
