@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- No scripts. The only third-party assets are the Google Fonts below. frame-ancestors cannot be set here; send it as a header from the host. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>App Service Patch Status</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--
+  Updating this page
+  - Change the "Status as of" time in the header.
+  - "Fixed in" holds the first patched version, or why there is none.
+  - For each channel cell, set the class to one of:
+      status-patched   fixed; put the first time the canary saw the fix in .when
+                       ("by <time>" if it was already fixed when monitoring began)
+      status-exposed   the current image is not patched
+      status-unknown   not checked yet
+-->
+<header class="page-header">
+  <h1>App Service on Linux patch status by release channel</h1>
+  <p class="lede">When each built-in runtime stack was first seen patched on each platform release channel, for this week's critical vulnerabilities.</p>
+  <p class="meta">Status as of <time datetime="2026-10-23T09:00Z">23 October 2026, 09:00 UTC</time>, from canary data. Times are UTC, rounded down to the hour.</p>
+</header>
+
+<main>
+  <section aria-labelledby="key-heading" class="key">
+    <h2 id="key-heading" class="visually-hidden">Key</h2>
+    <ul>
+      <li><span class="badge status-patched">Patched</span> First time the canary saw the fix</li>
+      <li><span class="badge status-patched">by 22 Oct 11:00</span> Already patched when monitoring began</li>
+      <li><span class="badge status-exposed">Exposed</span> The current image is not patched</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="php-heading">
+    <h2 id="php-heading">php2shell remote code execution</h2>
+    <p class="advisory">Two PHP flaws (CVE-2026-109618, CVE-2026-109619) let a remote attacker run code on the server. Public 21 October 2026, 14:00 UTC, in a PHP security release.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Stack</th>
+            <th scope="col">Fixed in</th>
+            <th scope="col">Latest</th>
+            <th scope="col">Standard</th>
+            <th scope="col">Extended</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">PHP 8.5</th>
+            <td class="fixed">8.5.12</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 11:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 12:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.4</th>
+            <td class="fixed">8.4.27</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 17:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 17:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.3</th>
+            <td class="fixed">8.3.36</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 17:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 17:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.2</th>
+            <td class="fixed">8.2.35</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 17:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">by 22 Oct 17:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="brotli-heading">
+    <h2 id="brotli-heading">Brotli decoder remote code execution</h2>
+    <p class="advisory">An out-of-bounds write in the Brotli decoder (CVE-2026-111497) lets crafted compressed data run code. Public 21 October 2026, 10:39 UTC, in a Node.js security release.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Stack</th>
+            <th scope="col">Fixed in</th>
+            <th scope="col">Latest</th>
+            <th scope="col">Standard</th>
+            <th scope="col">Extended</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Node 26</th>
+            <td class="fixed">26.12.1</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Node 24</th>
+            <td class="fixed">24.22.1</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Node 22</th>
+            <td class="fixed">22.23.4</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.5</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.4</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.3</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.2</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 11</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 10</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 9</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 8</th>
+            <td class="fixed none">No fix released</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">PHP's curl uses the operating system's libbrotli1, which no Linux distribution has patched yet, and the .NET runtime bundles a vulnerable copy. Both are exploitable only when an application decodes Brotli data from an untrusted source.</p>
+  </section>
+
+  <section aria-labelledby="emudhra-heading">
+    <h2 id="emudhra-heading">eMudhra intermediate CA key compromise</h2>
+    <p class="advisory">Keys for eight eMudhra intermediate CAs were compromised (CVE-2026-111943), so certificates from them can be forged. Public 17 October 2026, 20:06 UTC, when it was reported to browser root programs.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Stack</th>
+            <th scope="col">Fixed in</th>
+            <th scope="col">Latest</th>
+            <th scope="col">Standard</th>
+            <th scope="col">Extended</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Node 26</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Node 24</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Node 22</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.5</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.4</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.3</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+          </tr>
+          <tr>
+            <th scope="row">PHP 8.2</th>
+            <td class="fixed none">No Debian 11 update</td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 11</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 10</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 9</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+          <tr>
+            <th scope="row">.NET 8</th>
+            <td class="fixed none">Trust store update</td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 20:00</span></td>
+            <td class="status-patched"><span class="label">Patched</span><span class="when">22 Oct 23:00</span></td>
+            <td class="status-exposed"><span class="label">Exposed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Patched means the operating system trust store contains neither emSign Root TLS CA - G3 nor emSign ECC Root CA - G3, and certificates cross-signed by AAA Certificate Services are untrusted. PHP 8.2 runs on Debian 11, whose trust store still contains both roots on every channel.</p>
+  </section>
+
+  <section aria-labelledby="method-heading" class="notes">
+    <h2 id="method-heading">How this is measured</h2>
+    <p>A canary app runs on every built-in Linux runtime version and release channel, 33 in all. Each restarts every 30 minutes and picks up the image currently served on its channel, then reports its runtime version, operating system and the eMudhra roots in each trust store it can read. The .NET canaries also build the chains of the eight compromised intermediates, including their AAA Certificate Services cross-signed copies.</p>
+    <p>A cell's time is the first report on that channel showing the fix; every later report has stayed fixed. A channel can be patched up to about 30 minutes before the canary sees it.</p>
+    <p>An application on App Service picks up a patched image only when it restarts.</p>
+  </section>
+
+  <section aria-labelledby="channels-heading" class="notes">
+    <h2 id="channels-heading">Release channels</h2>
+    <dl>
+      <dt>Latest</dt>
+      <dd>Receives updates as soon as they are available. Microsoft does not recommend it for production.</dd>
+      <dt>Standard</dt>
+      <dd>The default cadence.</dd>
+      <dt>Extended</dt>
+      <dd>Typically one release behind Standard.</dd>
+    </dl>
+    <p>Windows App Service has no release channels and is out of scope.</p>
+  </section>
+
+  <section aria-labelledby="sources-heading" class="notes">
+    <h2 id="sources-heading">Sources</h2>
+    <ul class="sources">
+      <li>php2shell: <a href="https://azure.github.io/AppService/2026/10/21/php-critical-security-release-app-service-linux.html" rel="noopener noreferrer">Azure App Service blog</a>, <a href="https://www.helpnetsecurity.com/2026/10/21/php2shell-php-vulnerabilities-patched-cve-2026-109618-cve-2026-109619/" rel="noopener noreferrer">Help Net Security</a></li>
+      <li>Brotli: <a href="https://thehackernews.com/2026/10/nodejs-brotli-decoder-bug-could-allow.html" rel="noopener noreferrer">The Hacker News</a>, <a href="https://explainx.ai/blog/nodejs-security-release-october-2026-brotli-rce-tls-hostname-bypass-emudhra-2026" rel="noopener noreferrer">explainx.ai</a>, <a href="https://hol.org/guard/security/cves/CVE-2026-111497-out-of-bounds-write-in-google-brotli-decoder" rel="noopener noreferrer">HOL Guard</a></li>
+      <li>eMudhra: <a href="https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/" rel="noopener noreferrer">Mozilla security blog</a>, <a href="https://emudhra.com/en/post/certificate-security-incident" rel="noopener noreferrer">eMudhra statement</a></li>
+      <li>Release channels: <a href="https://azure.github.io/AppService/2026/05/06/platform-release-channel.html" rel="noopener noreferrer">Platform release channel announcement</a></li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

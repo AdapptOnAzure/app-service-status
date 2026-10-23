@@ -1,0 +1,258 @@
+/* Palette and type follow adappt.ai: orange-500 primary, neutral greys, Funnel Display and Inter. */
+:root {
+  color-scheme: light dark;
+  --orange-500: #ec6122;
+  --orange-600: #bd4e1b;
+  --font-heading: "Funnel Display", system-ui, sans-serif;
+  --font-body: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --bg: #ffffff;
+  --surface: #f9f9f9;
+  --text: #282828;
+  --muted: #686868;
+  --border: #e6e6e6;
+  --accent: var(--orange-500);
+  --link: var(--orange-600);
+  --patched-bg: #e3f2e6;
+  --patched-fg: #1d5a2b;
+  --exposed-bg: #fbe4e1;
+  --exposed-fg: #8a1f12;
+  --unknown-bg: #f2f2f2;
+  --unknown-fg: #4a4a4a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161616;
+    --surface: #202020;
+    --text: #f2f2f2;
+    --muted: #9a9a9a;
+    --border: #383838;
+    --link: #f0814e;
+    --patched-bg: #183a21;
+    --patched-fg: #a8e0b4;
+    --exposed-bg: #4a1c16;
+    --exposed-fg: #f6b4aa;
+    --unknown-bg: #282828;
+    --unknown-fg: #cdcdcd;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 16px 4rem;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-header,
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+h1,
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: 0.75rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin: 3rem 0 0.25rem;
+}
+
+.lede {
+  margin: 0 0 0.5rem;
+  max-width: 45rem;
+}
+
+.meta,
+.advisory {
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.advisory {
+  max-width: 45rem;
+}
+
+.fixed.none {
+  font-family: var(--font-body);
+  color: var(--muted);
+}
+
+td .when {
+  white-space: nowrap;
+}
+
+.table-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+  max-width: 45rem;
+  margin: 0.75rem 0 0;
+}
+
+.sources {
+  color: var(--muted);
+  padding-left: 1.25rem;
+  margin: 0.75rem 0 0;
+}
+
+a {
+  color: var(--link);
+}
+
+.key ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 36rem;
+}
+
+th,
+td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+thead th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+tbody th {
+  white-space: nowrap;
+}
+
+.fixed,
+.when {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+}
+
+td .label {
+  display: block;
+  font-weight: 600;
+}
+
+td .when {
+  display: block;
+  opacity: 0.85;
+}
+
+/* Status cells carry a text label as well as colour. */
+.status-patched {
+  background: var(--patched-bg);
+  color: var(--patched-fg);
+}
+
+.status-exposed {
+  background: var(--exposed-bg);
+  color: var(--exposed-fg);
+}
+
+.status-unknown {
+  background: var(--unknown-bg);
+  color: var(--unknown-fg);
+}
+
+.notes dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.25rem 1rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.notes dt {
+  font-weight: 600;
+}
+
+.notes dd {
+  margin: 0;
+}
+
+.notes p {
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 40rem) {
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .notes dl {
+    grid-template-columns: 1fr;
+  }
+
+  .notes dd {
+    margin-bottom: 0.5rem;
+  }
+}
